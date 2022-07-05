@@ -1,0 +1,16 @@
+.App {
+  height: 600px;
+  width: 400px;
+  background-color: rgb(20, 20, 20);
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 425px) {
+  .App {
+    height: 100%;
+    grid-template-rows: 1fr 1fr ;
+  }
+}

@@ -1,0 +1,80 @@
+.Keys {
+  display: flex;
+  flex-direction: row;
+}
+
+.Numbers {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  width: 70%;
+}
+
+.numKey {
+  background-color: rgb(20, 20, 20);
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+}
+
+.numKey:nth-child(-n+3) {
+  -webkit-box-shadow: inset 0px 9px 8px -10px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0px 9px 8px -10px rgba(0, 0, 0, 0.8);
+}
+
+.numKey:hover {
+  font-size: 2.7rem;
+}
+
+.Operators {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  width: 23%;
+  border-left: 1px solid rgb(65, 65, 65);
+}
+
+.operatorKey {
+  background-color: rgb(20, 20, 20);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(146, 146, 255);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.operatorKey:nth-child(1) {
+  -webkit-box-shadow: inset 0px 9px 8px -10px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0px 9px 8px -10px rgba(0, 0, 0, 0.8);
+}
+
+.operatorKey:hover {
+  font-size: 1.7rem;
+}
+
+.ArrowMenu {
+  width: 7%;
+  height: 100%;
+  background-color: rgb(62, 62, 255);
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: inset 0px 9px 8px -10px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0px 9px 8px -10px rgba(0, 0, 0, 0.8);
+}
+
+.arrowKey {
+  border: none;
+  background-color: transparent;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.arrowKey:hover {
+  font-size: 1.2rem;
+}
