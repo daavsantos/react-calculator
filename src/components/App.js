@@ -48,7 +48,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Display operationState={this.state} />
+        <Display appState={this.state} />
         <Keys handleKey={this.handleKey} />
       </div>
     )
