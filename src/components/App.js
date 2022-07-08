@@ -8,7 +8,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       operation: "",
-      result: ""
+      result: "",
+      ac: false
     }
   }
 
