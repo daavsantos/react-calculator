@@ -37,10 +37,12 @@ export default class Keys extends React.Component {
   }
 
   tryOperation(operation) {
-    try { return evaluate(operation) } catch { return this.props.appState.result }
+    const appState = this.props.appState
+    try { return evaluate(operation) } catch { return appState.result }
   }
 
   handleKey(key) {
+    const operationSize = this.props.appState.operation.length
     const maxOperationSize = 12
     const appState = this.props.appState
     const setAppState = this.props.setAppState
@@ -48,23 +50,35 @@ export default class Keys extends React.Component {
 
     switch (key) {
       case "DEL":
-        setAppState({ operation: "", result: "" })
+        console.log(operationSize)
+        if (operationSize > 0 && !appState.ac)  {
+          setAppState({
+            operation: appState.operation.slice(0, -1).toString(),
+            result: tryOperation(appState.operation.slice(0, -1))
+          })
+        } else {
+          setAppState({
+            operation: "",
+            result: ""
+          })
+        }
         break;
       case "=":
         setAppState({
-          operation: tryOperation(appState.operation),
-          result: ""
+          operation: tryOperation(appState.operation).toString(),
+          result: "",
+          ac: true
         })
         break;
       case "<":
         { /* Arrow menu soon.. */ }
         break;
       default:
-        const operationSize = appState.operation.length
         if (operationSize < maxOperationSize || !operationSize) {
           setAppState({
             operation: appState.operation + key,
-            result: tryOperation(appState.operation + key)
+            result: tryOperation(appState.operation + key),
+            ac: false
           })
         }
     }
@@ -73,7 +87,7 @@ export default class Keys extends React.Component {
   render() {
     const numbers = this.numbers
     const operators = this.operators
-    
+
     return (
       <div className="Keys">
         <div className="Numbers">
