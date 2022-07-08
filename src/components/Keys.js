@@ -42,13 +42,17 @@ export default class Keys extends React.Component {
 
   handleKey(key) {
     const maxOperationSize = 12
+    const appState = this.props.appState
+    const setAppState = this.props.setAppState
+    const tryOperation = this.tryOperation
+
     switch (key) {
       case "DEL":
-        this.props.setAppState({ operation: "", result: "" })
+        setAppState({ operation: "", result: "" })
         break;
       case "=":
-        this.props.setAppState({
-          operation: this.tryOperation(this.props.appState.operation),
+        setAppState({
+          operation: tryOperation(appState.operation),
           result: ""
         })
         break;
@@ -56,26 +60,29 @@ export default class Keys extends React.Component {
         { /* Arrow menu soon.. */ }
         break;
       default:
-        const operationSize = this.props.appState.operation.length
+        const operationSize = appState.operation.length
         if (operationSize < maxOperationSize || !operationSize) {
-          this.props.setAppState({
-            operation: this.props.appState.operation + key,
-            result: this.tryOperation(this.props.appState.operation + key)
+          setAppState({
+            operation: appState.operation + key,
+            result: tryOperation(appState.operation + key)
           })
         }
     }
   }
 
   render() {
+    const numbers = this.numbers
+    const operators = this.operators
+    
     return (
       <div className="Keys">
         <div className="Numbers">
-          {this.numbers.map((number) =>
+          {numbers.map((number) =>
             <Key key={"KTR" + number} handleKey={this.handleKey} keyClass="numKey" symbol={number}></Key>
           )}
         </div>
         <div className="Operators">
-          {this.operators.map((operator) =>
+          {operators.map((operator) =>
             <Key key={"KTR" + operator} handleKey={this.handleKey} keyClass="operatorKey" symbol={operator}></Key>
           )}
         </div>
