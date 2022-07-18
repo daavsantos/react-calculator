@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import Display from './Display'
-import Keys from './Keys'
+import Display from './components/Display'
+import Keys from './components/Keys'
 
 class App extends React.Component {
   constructor(props) {
